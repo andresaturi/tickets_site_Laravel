@@ -15,6 +15,10 @@
             <label for="title">Evento:</label>
             <input type="text" class="form-control" id="title" name="title" placeholder="Nome do Evento">
         </div>
+        <div class="form-group">
+            <label for="date">Data do Evento</label>
+            <input type="date" class="form-control" id="date" name="date">
+        </div>
 
         <div class="form-group">
             <label for="cidade">Cidade:</label>
@@ -33,7 +37,17 @@
             <label for="description">Descrição</label>
             <textarea class="form-control" id="description" name="description" placeholder="Descrição"></textarea> <!-- Corrigido o fechamento da tag 'textarea' -->
         </div>
-
+        <div class="form-group">
+            <label for="variacao">
+                Adicione as variações
+            </label>
+            <div class="form-group">
+                <input type="checkbox" name="itens[]" value="cor">Cor
+            </div>
+            <div class="form-group">
+                <input type="checkbox" name="itens[]" value="tamanho">Tamanho
+            </div>            
+        </div>
         <input type="submit" class="btn btn-primary" value="Criar Evento">
     </form>
 </div>

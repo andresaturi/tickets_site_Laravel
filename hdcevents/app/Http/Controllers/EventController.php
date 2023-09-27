@@ -9,9 +9,17 @@ use App\Models\Event;
 
 class EventController extends Controller{
     public function index() {
-        $events = Event::All();
+        $search = request('search');
+        if($search){
+            $events = Event::where([
+                ['title', 'like', '%'.$search.'%']
+            ])->get();
+        }else{
+            $events = Event::All();
+        }
+        
 
-        return view('welcome', ['events' => $events]);
+        return view('welcome', ['events' => $events, 'search' => $search]);
     }
 
     public function create(){
@@ -24,8 +32,11 @@ class EventController extends Controller{
 
         $event->title = $request->title;
         $event->cidade = $request->cidade;
+        $event->date = $request->date;
         $event->private = $request->private;
-        $event->description =$request->description;
+        $event->description = $request->description;
+        $event->itens = $request->itens;
+        
 
         // Image Upload
         if($request->hasFile('image') && $request->file('image')->isValid()){
