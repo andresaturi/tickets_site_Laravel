@@ -19,6 +19,7 @@ Route::get('/', [EventController::class, 'index']);
 Route::get('/events/create', [EventController::class, 'create'])->middleware('auth');
 Route::get('/events/{id}', [EventController::class, 'show']);
 Route::post('/events', [EventController::class, 'store']);
+Route::get('/dashboard', [EventController::class, 'dashboard'])->middleware('auth');
 
 Route::get('/produtos', function () {
 
@@ -31,12 +32,4 @@ Route::get('/produtos', function () {
 Route::get('/produto/{id?}', function ($id = null) {
     return view('product', ['id' => $id]);
 });
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified'
-])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
-});
+

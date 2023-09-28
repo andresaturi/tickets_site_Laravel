@@ -9,6 +9,11 @@ use App\Models\User;
 
 
 class EventController extends Controller{
+    public function main() {
+        $user = auth()->user();        
+        return view('layouts.main', ['user' => $user]);
+    }
+
     public function index() {
         $search = request('search');
         if($search){
@@ -18,8 +23,7 @@ class EventController extends Controller{
         }else{
             $events = Event::All();
         }
-        
-
+               
         return view('welcome', ['events' => $events, 'search' => $search]);
     }
 
@@ -67,5 +71,15 @@ class EventController extends Controller{
 
 
         return view('events.show', ['event' => $event, 'eventOwner' =>$eventOwner]);
+    }
+
+    public function dashboard() {
+        $user = auth()->user();
+
+        $events = $user->events;
+
+        //var_dump($events);exit;
+
+        return view('events.dashboard', ['events' => $events]);
     }
 }

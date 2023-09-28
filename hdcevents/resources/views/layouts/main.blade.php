@@ -28,9 +28,10 @@
             @endguest
             @auth
             <li class="nav-item">
-                <a class="btn btn-secondary btn-sm" href="#">
-                    <i class="fa-solid fa-user"></i>
-             
+                <a class="btn" href="#">
+                    <p> <?php echo auth()->user()->name; ?>
+                        <i class="fa-solid fa-user"></i>
+                    </p>             
                 </a>
             </li>
             <li class="nav-item">
