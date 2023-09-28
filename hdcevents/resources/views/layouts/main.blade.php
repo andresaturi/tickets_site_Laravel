@@ -22,6 +22,11 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ml-auto">
+            @guest
+            <a href="/login">login</a>
+            <a href="/register">cadastrar</a>
+            @endguest
+            @auth
             <li class="nav-item">
                 <a class="btn btn-secondary btn-sm" href="#">
                     <i class="fa-solid fa-user"></i>
@@ -29,10 +34,17 @@
                 </a>
             </li>
             <li class="nav-item">
-            <a href="{% url 'logout' %}" class="btn btn-danger btn-sm">
-                <i class="fa-solid fa-power-off"></i>
-            </a>
-          </li>
+                <form action="/logout" method="POST">
+                    @csrf
+                    <a href="/logout"
+                    class="btn btn-danger btn-sm"
+                        onclick="event.preventDefault();
+                        this.closest('form').submit();">
+                        <i class="fa-solid fa-power-off"></i>
+                    </a>
+                </form>
+            </li>
+            @endauth          
         </ul>
       </div>
     </nav>
