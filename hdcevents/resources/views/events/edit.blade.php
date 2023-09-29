@@ -41,7 +41,7 @@
         </div>
         <div class="form-group">
             <label for="variacao">
-                Adicione as variações
+                Adicione as variação
             </label>
             <div class="form-group">
                 <input type="checkbox" name="itens[]" value="cor">Cor
