@@ -12,8 +12,18 @@
             <div id="info-container" class="col-md-6">
                 <h1>{{ $event->title }}</h1>
                 <p class="event-city">{{ $event->cidade }}</p>
-                <p class="event-owner">{{ $eventOwner['name'] }}</p>                
-                <a href="#" class="btn btn-primary" id="event-submit">Confirmar presença</a>
+                <p class="event-owner">{{ $eventOwner['name'] }}</p> 
+                              
+                <form action="/events/join/{{ $event->id }}" method="POST">
+                @csrf 
+                    <a href="/events/join/{{ $event->id }}" 
+                    class="btn btn-primary" 
+                    id="event-submit"
+                    onclick="event.preventDefault();
+                    this.closest('form').submit();">
+                    Confirmar presença
+                    </a>
+                </form>
             </div>
             <div class="col-md-12" id="description-container">
                 <p>{{ $event->description }}</p>

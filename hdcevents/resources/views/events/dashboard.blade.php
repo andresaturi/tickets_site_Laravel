@@ -20,7 +20,7 @@
         <tr>
             <td scope="row">{{ $loop->index +1 }}</td>
             <td><a href="/evens/{{ $event->id }}">{{ $event->title }}</a></td>
-            <td>0</td>
+            <td>{{ count($event->users) }}</td>
             <td>
                 <a href="/events/edit/{{ $event->id }}" class="btn btn-info-edit-btn">Editar</a>
                 <form action="/events/{{ $event->id }}" method="POST">
