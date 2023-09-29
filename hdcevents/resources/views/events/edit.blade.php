@@ -50,7 +50,7 @@
                 <input type="checkbox" name="itens[]" value="tamanho">Tamanho
             </div>            
         </div>
-        <input type="submit" class="btn btn-primary" value="Editar Evento">
+        <input type="submit" class="btn btn-primary" value="Atualizar">
     </form>
 </div>
 
