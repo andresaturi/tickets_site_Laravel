@@ -3,9 +3,9 @@
 @section('title', 'Dashbord')
 
 @section('content')
+
+@if(count($events) > 0)
 <h1>Meus eventos</h1>
-
-
 <table class="table">
     <thead>
         <tr>
@@ -18,17 +18,27 @@
     <tbody>
         @foreach($events as $event)
         <tr>
-            <th scope="row">{{ $loop->index +1 }}</th>
+            <td scope="row">{{ $loop->index +1 }}</td>
             <td><a href="/evens/{{ $event->id }}">{{ $event->title }}</a></td>
             <td>0</td>
-            <td><a href="#">Editar</a><a href="#">Deletar</a></td>
+            <td>
+                <a href="/events/edit/{{ $event->id }}" class="btn btn-info-edit-btn">Editar</a>
+                <form action="/events/{{ $event->id }}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger-delete-btn">
+                        Deletar
+                    </button>
+                </form>
+                
+            </td>
                     
         </tr>
         @endforeach
     </tbody>
 </table>
-
-<p>Voce nao tem nenhum evento, <a href="/events/create">\Criar um evento</a></p>
-
+@else
+<p>Voce nao tem nenhum evento, <a href="/events/create">Criar um evento</a></p>
+@endif
 @endsection
 

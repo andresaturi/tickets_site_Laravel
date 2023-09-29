@@ -28,7 +28,7 @@
             @endguest
             @auth
             <li class="nav-item">
-                <a class="btn" href="#">
+                <a class="btn" href="/dashboard">
                     <p> <?php echo auth()->user()->name; ?>
                         <i class="fa-solid fa-user"></i>
                     </p>             

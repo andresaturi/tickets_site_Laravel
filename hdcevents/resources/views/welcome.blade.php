@@ -7,10 +7,10 @@
 @if(count($events) > 0) 
 <div id='search-container' class="col md-12">
     @if($search)
-    <h2>Buscando por "{{ $search }}"</h2>
+    <h3>Buscando por "{{ $search }}"</h3>
     <a href="/">Limpar Busca</a>
     @else
-    <h2>Busque um evento</h2>
+    <h3>Busque um evento</h3>
     @endif
     <form action="/" method="GET">
         <input type="text" id="search" name="search" class="form-control" placeholder="Procurar evento">
