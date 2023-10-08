@@ -13,7 +13,8 @@
                 <h1>{{ $event->title }}</h1>
                 <p class="event-city">{{ $event->cidade }}</p>
                 <p class="event-owner">{{ $eventOwner['name'] }}</p> 
-                              
+                 
+                @if(!$hasUserJoined)
                 <form action="/events/join/{{ $event->id }}" method="POST">
                 @csrf 
                     <a href="/events/join/{{ $event->id }}" 
@@ -24,6 +25,12 @@
                     Confirmar presença
                     </a>
                 </form>
+                @else
+                    <p>Voce já esta participando desse evento
+                         <a href="/dashboard">Ver meus eventos</a>
+                    </p>
+                @endif
+
             </div>
             <div class="col-md-12" id="description-container">
                 <p>{{ $event->description }}</p>

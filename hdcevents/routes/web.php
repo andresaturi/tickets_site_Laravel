@@ -23,17 +23,5 @@ Route::get('/events/edit/{id}', [EventController::class, 'edit'])->middleware('a
 Route::put('/events/update/{id}', [EventController::class, 'update'])->middleware('auth');
 Route::delete('/events/{id}', [EventController::class, 'destroy'])->middleware('auth');
 Route::get('/dashboard', [EventController::class, 'dashboard'])->middleware('auth');
-
-Route::get('/produtos', function () {
-
-    $busca = request('search');
-
-    return view('products', ['busca' => $busca]);
-});
-
-
-Route::get('/produto/{id?}', function ($id = null) {
-    return view('product', ['id' => $id]);
-});
-
 Route::post('events/join/{id}', [EventController::class, 'joinEvent'])->middleware('auth');
+Route::delete('events/leave/{id}', [EventController::class, 'leaveEvent'])->middleware('auth');
