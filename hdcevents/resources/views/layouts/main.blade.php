@@ -66,17 +66,12 @@
                 </a>
             </li>
             <li>
-                <a href="/events/create">
+                <a href="/produtos">
                     <span class="fa fa-sticky-note mr-3"></span>
-                    Criar Evento
-                </a>
-            </li>
-            <li>
-                <a href="{% url 'listar-produtos' %}" class="nav-link">
-                    <span class="fa fa-paper-plane mr-3"></span>
                     Produtos
                 </a>
             </li>
+            
             <li>
                 <a href="{% url 'listar-manuais' %}"><span class="fa fa-sticky-note mr-3"></span>
                     Manuais

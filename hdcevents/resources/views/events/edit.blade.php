@@ -4,7 +4,6 @@
 
 @section('content')
 <div id="event-create-container" class="col-md-6 offset-md-3">
-    <h1>Editando o Evento {{ $event->title }}</h1>
     <form action="/events/update/{{ $event->id }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')

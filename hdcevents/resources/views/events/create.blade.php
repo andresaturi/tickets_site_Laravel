@@ -1,10 +1,17 @@
 @extends('layouts.main')
 
-@section('title', 'Cadastrar Evento')
+@section('title', 'Cadastro de Produto')
 
 @section('content')
-<div id="event-create-container" class="col-md-6 offset-md-3">
-    <h1>Crie seu Evento</h1>
+<div class="container mt-8">
+    <p>Ativo site</p>
+    <label class="toggle-switch">
+        <input type="checkbox">
+        <span class="toggle-slider"></span>
+    </label>
+</div>
+<div id="event-create-container" class="col-md-16 offset-md-3">
+    <h2>Cadastro de produtos</h2>
     <form action="/events" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="form-group">
@@ -12,11 +19,11 @@
             <input type="file" class="form-control-file" id="image" name="image">
         </div>
         <div class="form-group">
-            <label for="title">Evento:</label>
+            <label for="title">Nome:</label>
             <input type="text" class="form-control" id="title" name="title" placeholder="Nome do Evento">
         </div>
         <div class="form-group">
-            <label for="date">Data do Evento</label>
+            <label for="date">Validade (Opcional)</label>
             <input type="date" class="form-control" id="date" name="date">
         </div>
 

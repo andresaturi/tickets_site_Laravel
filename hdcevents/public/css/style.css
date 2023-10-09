@@ -8363,3 +8363,48 @@ footer p{
   width: 100px;
   margin-top: 20px;
 }
+
+.align-right {
+    float: right;
+}
+
+.toggle-switch {
+  width: 50px;
+  height: 25px;
+  position: relative;
+}
+
+.toggle-switch input[type="checkbox"] {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.toggle-slider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  border-radius: 25px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.toggle-switch input[type="checkbox"]:checked + .toggle-slider {
+  background-color: #2196F3; /* Cor de fundo quando o interruptor está ligado */
+}
+
+.toggle-slider:before {
+  content: "";
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background-color: #fff;
+  transition: transform 0.3s ease-in-out;
+}
+
+.toggle-switch input[type="checkbox"]:checked + .toggle-slider:before {
+  transform: translateX(25px); /* Mover o botão para a direita quando o interruptor está ligado */
+}

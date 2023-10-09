@@ -15,16 +15,22 @@ class EventController extends Controller{
     }
 
     public function index() {
+        return view('welcome');
+    }
+
+    public function produtos() {
         $search = request('search');
+        $user = auth()->user();
         if($search){
             $events = Event::where([
-                ['title', 'like', '%'.$search.'%']
+                ['title', 'like', '%'.$search.'%'],
+                ['user_id', '=', $user->id],
             ])->get();
         }else{
-            $events = Event::All();
+            $events = Event::where('user_id', $user->id)->get();;
         }
                
-        return view('welcome', ['events' => $events, 'search' => $search]);
+        return view('events.produtos', ['events' => $events, 'search' => $search]);
     }
 
     public function create(){
