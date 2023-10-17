@@ -8,6 +8,7 @@ use App\Models\User;
 
 
 
+
 class EventController extends Controller{
     public function main() {
         $user = auth()->user();        
@@ -16,22 +17,7 @@ class EventController extends Controller{
 
     public function index() {
         return view('welcome');
-    }
-
-    public function produtos() {
-        $search = request('search');
-        $user = auth()->user();
-        if($search){
-            $events = Event::where([
-                ['title', 'like', '%'.$search.'%'],
-                ['user_id', '=', $user->id],
-            ])->get();
-        }else{
-            $events = Event::where('user_id', $user->id)->get();;
-        }
-               
-        return view('events.produtos', ['events' => $events, 'search' => $search]);
-    }
+    }  
 
     public function create(){
         return view('events.create');

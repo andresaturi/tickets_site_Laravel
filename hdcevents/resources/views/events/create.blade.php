@@ -19,7 +19,7 @@
             <input type="file" class="form-control-file" id="image" name="image">
         </div>
         <div class="form-group">
-            <label for="title">Nome:</label>
+            <label for="title">Nome</label>
             <input type="text" class="form-control" id="title" name="title" placeholder="Nome do Evento">
         </div>
         <div class="form-group">
@@ -33,7 +33,7 @@
         </div>        
             
         <div class="form-group">
-            <label for="private">O Evento é privado?</label>
+            <label for="private">Ativo</label>
             <select name="private" id="private" class="form-control">
                 <option value="0">Não</option>
                 <option value="1">Sim</option>

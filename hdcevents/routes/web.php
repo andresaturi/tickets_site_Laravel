@@ -3,6 +3,7 @@
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,7 +17,6 @@ use App\Http\Controllers\EventController;
 */
 
 Route::get('/', [EventController::class, 'index']);
-Route::get('/produtos', [EventController::class, 'produtos'])->middleware('auth');;
 Route::get('/events/create', [EventController::class, 'create'])->middleware('auth');
 Route::get('/events/{id}', [EventController::class, 'show']);
 Route::post('/events', [EventController::class, 'store']);
@@ -26,3 +26,11 @@ Route::delete('/events/{id}', [EventController::class, 'destroy'])->middleware('
 Route::get('/dashboard', [EventController::class, 'dashboard'])->middleware('auth');
 Route::post('events/join/{id}', [EventController::class, 'joinEvent'])->middleware('auth');
 Route::delete('events/leave/{id}', [EventController::class, 'Event'])->middleware('auth');
+
+//Produtos
+Route::get('/produtos', [ProductController::class, 'listProducts'])->middleware('auth');
+Route::get('/produtos/create', [ProductController::class, 'productCreate'])->middleware('auth');
+Route::post('/produtos', [ProductController::class, 'ProductStore'])->middleware('auth');;
+Route::get('/produtos/{id}', [ProductController::class, 'productShow'])->middleware('auth');;
+Route::get('/produtos/edit/{id}', [ProductController::class, 'productEdit'])->middleware('auth');
+Route::put('/produtos/update/{id}', [ProductController::class, 'productUpdate'])->middleware('auth');
