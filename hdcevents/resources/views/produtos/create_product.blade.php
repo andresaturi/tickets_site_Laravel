@@ -8,15 +8,7 @@
     <h2>Cadastro de produtos</h2>
     <form action="/produtos" method="POST" enctype="multipart/form-data">
         @csrf
-        <div class="container mt-8">
-            <div class="form-group">
-                <p>Ativo site</p>
-                <label class="toggle-switch">
-                    <input type="checkbox" id="ativo_site" name="ativo_site">
-                    <span class="toggle-slider"></span>
-                </label>
-            </div>
-        </div>
+        
         <div class="form-group">
             <label for="image">Imagem</label>
             <input type="file" class="form-control-file" id="image" name="image">
@@ -45,6 +37,14 @@
         <div class="form-group">
             <label for="preco">Preço</label>
             <input type="text" class="preco" id="preco" name="preco">
+        </div>
+
+        <div class="form-group">
+            <label for="ativo_site">Ativo Site</label>
+            <select name="ativo_site" id="ativo_site" class="form-control">
+                <option value="0">Não</option>
+                <option value="1">Sim</option>
+            </select>
         </div>
 
         <input type="submit" class="btn btn-primary" value="Cadastrar">

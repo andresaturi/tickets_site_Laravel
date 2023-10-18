@@ -10,4 +10,6 @@ class Produtos extends Model
     use HasFactory;
     public $table = 'produtos';
 
+    protected $guarded = [];
+
 }

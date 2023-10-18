@@ -9,8 +9,16 @@ class ProductController extends Controller
 {
     public function listProducts(){
 
-        $produtos = Produtos::All();
-        return view('produtos.productList', ['produtos' => $produtos]);
+        $search = request('search');
+        if($search){
+            $produtos = Produtos::where([
+                ['nome', 'like', '%'.$search.'%']
+            ])->get();
+        }else{
+            $produtos = Produtos::All();        
+        }
+        return view('produtos.productList', ['produtos' => $produtos, 'search' => $search]);
+       
     }
     
     public function productCreate(){
@@ -74,11 +82,13 @@ class ProductController extends Controller
         $data = $request->all();
         if($request->hasFile('image') && $request->file('image')->isValid()){
                
-            unlink(public_path('img/events/' . $produto->image));
+            if($produto->image != 'null.png'){
+                unlink(public_path('img/products/' . $produto->image));
+            }            
             $requestImage = $request->image;
             $extension = $requestImage->extension();
             $imageName = md5($requestImage->getClientOriginalName() . strtotime("now") . "." . $extension);
-            $requestImage->move(public_path('img/events'), $imageName);
+            $requestImage->move(public_path('img/products'), $imageName);
 
             $data['image'] = $imageName;
         }

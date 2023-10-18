@@ -8,14 +8,14 @@
 @if(count($produtos) > 0) 
 
 <div id='search-container' class="col-md-12">
-    <!--if(search)
-    <h3>Buscando por " search }}"</h3>
-    <a href="/">Limpar Busca</a>
-    else
+    @if($search)
+    <h3>Buscando por " {{ $search }}"</h3>
+    <a href="/produtos">Limpar Busca</a>
+    @else
     <h3>Busque um Produto</h3>
-    endif
--->
-    <form action="/" method="GET">
+    @endif
+
+    <form action="/produtos" method="GET">
         <input type="text" id="search" name="search" class="form-control" placeholder="Procurar evento">
     </form>
     <div id="events-container" class="col-md-12">   
@@ -32,10 +32,10 @@
                 </div>
             </div>
             @endforeach
-            @elseif(count($events) == 0 && $search)
+            @elseif(count($produtos) == 0 && $search)
                 <p class="container">
                     Nenhum evento encontrado
-                    <a href="/">Limpar Busca</a>
+                    <a href="/produtos">Limpar Busca</a>
                 </p>
                 
             @else
