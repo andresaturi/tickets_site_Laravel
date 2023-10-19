@@ -8357,6 +8357,7 @@ footer p{
   margin-bottom: 0;
   text-align: center;
   padding: 10px;
+  border-radius: 10px;
 }
 
 .image-preview{

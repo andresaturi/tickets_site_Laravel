@@ -7,18 +7,26 @@ use App\Models\Produtos;
 
 class ProductController extends Controller
 {
-    public function listProducts(){
+    public function listProducts() {
+    // Obtenha o usuário logado
+        $user = auth()->user();
 
-        $search = request('search');
-        if($search){
-            $produtos = Produtos::where([
-                ['nome', 'like', '%'.$search.'%']
-            ])->get();
-        }else{
-            $produtos = Produtos::All();        
+        // Verifique se o usuário está autenticado
+        if ($user) {
+            $search = request('search');
+            $query = Produtos::where('user_id', $user->id);
+
+            if ($search) {
+                $query->where('nome', 'like', '%' . $search . '%');
+            }
+
+            $produtos = $query->get();
+
+            return view('produtos.productList', ['produtos' => $produtos, 'search' => $search]);
+        } else {
+            // O usuário não está autenticado, redirecione para a página de login
+            return redirect()->route('login');
         }
-        return view('produtos.productList', ['produtos' => $produtos, 'search' => $search]);
-       
     }
     
     public function productCreate(){
@@ -58,12 +66,19 @@ class ProductController extends Controller
         return redirect('/produtos')->with('msg', 'Produto Criado');
     }
 
-    public function productShow($id){
+    public function productShow($id) {
+    // Obtenha o produto pelo ID
+    $produto = Produtos::findOrFail($id);
+    $user = auth()->user();
 
-        $produto = Produtos::findOrFail($id);
-
+    // Verifique se o produto pertence ao usuário logado
+    if ($produto->user_id == $user->id) {
         return view('produtos.productShow', ['produto' => $produto]);
+    } else {
+        // Redirecione ou exiba uma mensagem de erro, pois o produto não pertence ao usuário logado
+        return redirect()->route('login');
     }
+}
 
     public function productEdit($id) {
 
